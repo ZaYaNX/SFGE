@@ -21,6 +21,7 @@ class PlayerCharacterBasic(Component):
         if self.body:
             self.body.velocity = d
 
+
     def on_trigger_enter(self, collider):
         pass
 

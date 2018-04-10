@@ -61,6 +61,7 @@ public:
 	static Sound* LoadSound(Engine& engine, json& componentJson, GameObject* gameObject);
 	void SetBuffer(sf::SoundBuffer* buffer);
 	void Play();
+	void Stop();
 };
 
 class SoundManager

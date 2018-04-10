@@ -46,6 +46,9 @@ public:
 	void SetVelocity(b2Vec2 v);
 	b2Vec2 GetVelocity();
 
+	float GetMass();
+
+	void AddForce(b2Vec2 f);
 
 	static Body2d* LoadBody2d(Engine& engine, GameObject* gameObject, json& componentJson);
 protected:

@@ -108,6 +108,7 @@ PYBIND11_EMBEDDED_MODULE(SFGE, m)
 		.value("PyComponent", ComponentType::PYCOMPONENT)
 		.value("Shape", ComponentType::SHAPE)
 		.value("Body", ComponentType::BODY2D)
+		.value("Sprite", ComponentType::SPRITE)
 		.export_values();
 
 	py::class_<Transform, Component> transform(m, "Transform");
@@ -123,11 +124,14 @@ PYBIND11_EMBEDDED_MODULE(SFGE, m)
 
 	py::class_<Body2d, Component> body(m, "Body");
 	body
-		.def_property("velocity", &Body2d::GetVelocity, &Body2d::SetVelocity);
+		.def_property("velocity", &Body2d::GetVelocity, &Body2d::SetVelocity)
+		.def("add_force", &Body2d::AddForce)
+		.def_property_readonly("mass", &Body2d::GetMass);
 
 	py::class_<Sound, Component> sound(m, "Sound");
 	sound
-		.def("play", &Sound::Play);
+		.def("play", &Sound::Play)
+		.def("stop", &Sound::Stop);
 	
 	py::class_<Shape, Component> shape(m, "Shape");
 	shape
@@ -148,6 +152,7 @@ PYBIND11_EMBEDDED_MODULE(SFGE, m)
 		.def_readonly_static("Magenta", &sf::Color::Magenta)
 		.def_readonly_static("Cyan", &sf::Color::Cyan)
 		.def_readonly_static("Transparent", &sf::Color::Transparent);
+
 	py::class_<Timer> timer(m, "Timer");
 	timer
 		.def(py::init<float, float>())

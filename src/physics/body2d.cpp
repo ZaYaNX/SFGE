@@ -62,6 +62,24 @@ b2Vec2 Body2d::GetVelocity()
 }
 
 
+float Body2d::GetMass()
+{
+	if (m_Body != nullptr)
+	{
+		return m_Body->GetMass();
+	}
+	return 0.0f;
+}
+
+void Body2d::AddForce(b2Vec2 f)
+{
+	if (m_Body != nullptr)
+	{
+		m_Body->ApplyForce(f, m_Body->GetPosition(), true);
+	}
+}
+
+
 
 Body2d * Body2d::LoadBody2d(Engine & engine, GameObject * gameObject, json& componentJson)
 {

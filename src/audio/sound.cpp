@@ -216,6 +216,11 @@ void Sound::Play()
 
 }
 
+void Sound::Stop()
+{
+	m_Sound->stop();
+}
+
 SoundManager::~SoundManager()
 {
 	for (auto sound : m_Sounds)
