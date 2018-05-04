@@ -70,6 +70,11 @@ float p2Vec2::Dot(p2Vec2 v1, p2Vec2 v2)
 	return v1.x*v2.x+v1.y*v2.y;
 }
 
+p2Vec3 p2Vec2::Cross(p2Vec2 v1, p2Vec2 v2)
+{
+	return p2Vec3(0, 0, v1.x*v2.y - v1.y*v2.x);
+}
+
 float p2Vec2::GetMagnitude()
 {
 	return sqrt(x*x+y*y);
@@ -100,6 +105,36 @@ p2Vec3::p2Vec3(float x, float y, float z)
 	this->x = x;
 	this->y = y;
 	this->z = z;
+}
+
+p2Vec3 p2Vec3::operator+(p2Vec3 v) 
+{
+	return p2Vec3(x + v.x, y + v.y, z + v.y);
+}
+
+p2Vec3 p2Vec3::operator+=(p2Vec3 v)
+{
+	return *this + v;
+}
+
+p2Vec3 p2Vec3::operator-(p2Vec3 v)
+{
+	return p2Vec3(x - v.x, y - v.y, z - v.z);
+}
+
+p2Vec3 p2Vec3::operator-=(p2Vec3 v)
+{
+	return *this - v;
+}
+
+p2Vec3 p2Vec3::operator/(float f)
+{
+	return p2Vec3(x / f, y / f, z / f);
+}
+
+p2Vec3 p2Vec3::operator*(float f)
+{
+	return p2Vec3(x*f, y*f, z*f);
 }
 
 float p2Vec3::Dot(p2Vec3 v1, p2Vec3 v2)

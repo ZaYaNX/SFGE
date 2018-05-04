@@ -44,7 +44,7 @@ struct p2Mat22
 	p2Mat22 Invert();
 	float GetDeterminant();
 
-	p2Vec2 rows[2] = {};
+	p2Vec2 column[2] = {};
 };
 
 struct p2Mat33
@@ -67,7 +67,7 @@ struct p2Mat33
 	*/
 	float GetDeterminant();
 
-	p2Vec3 rows[3] = {};
+	p2Vec3 column[3] = {};
 };
 
 #endif
