@@ -22,6 +22,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include <p2body.h>
+#include <p2collider.h>
+
+
+
+p2Body::p2Body(p2BodyDef *p2BodyDef)
+{
+	position = p2BodyDef->position;
+
+	/*switch(p2BodyType)
+	{
+	case p2BodyType::STATIC:
+		p2BodyDef.type = p2BodyType::STATIC;
+		break;
+	case p2BodyType::KINEMATIC:
+		p2BodyDef.type = p2BodyType::KINEMATIC;
+		break;
+	case p2BodyType::DYNAMIC:
+		p2BodyDef.type = p2BodyType::DYNAMIC;
+		break;
+
+
+	}*/
+	mass = p2BodyDef->mass;
+	linearVelocity = p2BodyDef->linearVelocity;
+	type = p2BodyDef->type;
+
+}
 
 p2Vec2 p2Body::GetLinearVelocity()
 {
@@ -31,6 +58,9 @@ p2Vec2 p2Body::GetLinearVelocity()
 void p2Body::SetLinearVelocity(p2Vec2 velocity)
 {
 	linearVelocity = velocity;
+}
+void p2Body::addForce(p2Vec2 force)
+{
 }
 float p2Body::GetAngularVelocity()
 {
@@ -42,7 +72,27 @@ p2Vec2 p2Body::GetPosition()
 	return position;
 }
 
+float p2Body::GetMass()
+{
+	return 0.0f;
+}
+
+void p2Body::SetMass(float mass)
+{
+}
+
+void p2Body::addBody(p2Body * body)
+{
+	bodies.push_front(*body);
+}
+
+void p2Body::setPosition(p2Vec2 p)
+{
+	this->position = position + p;
+}
+
 p2Collider * p2Body::CreateCollider(p2ColliderDef * colliderDef)
 {
+	collider = new p2Collider(*colliderDef);
 	return nullptr;
 }

@@ -41,6 +41,7 @@ class p2Shape
 class p2CircleShape : public p2Shape
 {
 public:
+	p2CircleShape();
 	p2CircleShape(float m_Radius);
 	/**
 	* \brief Setter for the radius
@@ -56,6 +57,7 @@ private:
 class p2RectShape : public p2Shape
 {
 public:
+	p2RectShape();
 	p2RectShape(p2Vec2 m_Size);
 	void SetSize(p2Vec2 size);
 private:
